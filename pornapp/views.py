@@ -1,18 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+
+from .models import Members,Appartment
 # Create your views here.
 
 
-def home(request):
-
-    return render(request,"index.html")
 
 
-def add(request):
+#def team(request):
 
-    val1 = int(request.POST["num1"])
-    val2 = int(request.POST["num2"])
+##    mems = Members.objects.all()
 
-    ans = val1 + val2
- 
-    return render(request,"index.html",{"answer": ans})
+#    return render(request,"index.html",{"members": mems})
+
+
+def villas(request):
+    
+    vill = Appartment.objects.all()
+
+    return render(request,"index.html",{"homes": vill})
