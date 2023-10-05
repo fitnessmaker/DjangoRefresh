@@ -60,25 +60,26 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
                         <a href="{% static 'index.html' %}" class="nav-item nav-link active">Home</a>
-                        <a href="{% static 'templates/about.html' %}" class="nav-item nav-link">About</a>
+                        <a href="{% static 'about.html' %}" class="nav-item nav-link">About</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="property-list.html" class="dropdown-item">Property List</a>
-                                <a href="property-type.html" class="dropdown-item">Property Type</a>
-                                <a href="property-agent.html" class="dropdown-item">Property Agent</a>
-                            </div>
+                           
                         </div>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Error</a>
+                                <a href="{% static 'testimonial.html' %}" class="dropdown-item">Testimonial</a>
+                                <a href="{% static '404.html' %}" class="dropdown-item">404 Error</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        {% if user.is_authenticated %}
+                        &nbsp;<h6>Welcome Mr:{{user}}</h6> 
+                        <a href="accounts/logout" class="nav-item nav-link">Logout</a>
+                        {% else %}
+                        <a href="accounts/login" class="nav-item nav-link">Login</a>
                     </div>
-                    <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a>
+                    <a href="accounts/register" class="btn btn-primary px-3 d-none d-lg-flex">Register</a>
+                        {% endif %}
                 </div>
             </nav>
         </div>
@@ -98,6 +99,13 @@
                         </div>
                     </div>
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <h5> <hr>
+                            {% for mess in messages %}
+                    
+                            <h3>{{mess}}</h3>
+                    
+                            {% endfor %}
+                            <hr></h5>
                         <h1 class="mb-4">#1 Place To Find The Perfect Property</h1>
                         <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                         <p><i class="fa fa-check text-primary me-3"></i>Tempor erat elitr rebum at clita</p>
@@ -133,8 +141,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="tab-content">
+                <div class="tab-content" >
+                    {% if user.is_authenticated %}
                     <div id="tab-1" class="tab-pane fade show p-0 active">
+                      
                         <div class="row g-4">
                             {% for appart in homes %}
                             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -152,6 +162,7 @@
                                         <a class="d-block h5 mb-2" href="">{{appart.name}}</a>
                                         <p><i class="fa fa-map-marker-alt text-primary me-2"></i>{{appart.des}}</p>
                                     </div>
+                   
                                     
                                 </div>
                                
@@ -164,7 +175,7 @@
                                         </div>--->
                         </div>
                     </div>
-                    
+                    {% endif %}
                                   
                         </div>
                     </div>

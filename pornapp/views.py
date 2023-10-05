@@ -9,7 +9,7 @@ from .models import Members,Appartment
 
 #def team(request):
 
-##    mems = Members.objects.all()
+#    mems = Members.objects.all()
 
 #    return render(request,"index.html",{"members": mems})
 
@@ -19,3 +19,8 @@ def villas(request):
     vill = Appartment.objects.all()
 
     return render(request,"index.html",{"homes": vill})
+
+
+def about(request):
+
+    return render(request,"about.html")

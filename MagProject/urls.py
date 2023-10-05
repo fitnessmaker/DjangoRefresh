@@ -21,6 +21,7 @@ from django.conf.urls.static import static #static settings
 
 urlpatterns = [
     path('', include('pornapp.urls')),
+    path('accounts/', include('Accounts.urls')),
     path('admin/', admin.site.urls),
 ]
 

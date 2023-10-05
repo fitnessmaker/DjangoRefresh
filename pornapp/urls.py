@@ -6,5 +6,7 @@ urlpatterns = [
     
     #path("",views.team,name="team"),
     path("",views.villas,name="villas"),
+    path("about",views.about,name="about"),
+  
 
 ]
